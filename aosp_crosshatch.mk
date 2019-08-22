@@ -14,28 +14,21 @@
 # limitations under the License.
 #
 
+# Include AEX common configuration
+include vendor/aosp/common.mk
+
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-$(call inherit-product, device/google/crosshatch/device-crosshatch.mk)
-$(call inherit-product-if-exists, vendor/google_devices/crosshatch/proprietary/device-vendor.mk)
+# Inherit AOSP device configuration for crosshatch
+$(call inherit-product, device/google/crosshatch/full_crosshatch.mk)
 
-PRODUCT_PACKAGES += \
-    Dialer \
-    Launcher3QuickStep \
-    WallpaperPicker
-
-# STOPSHIP deal with Qualcomm stuff later
-# PRODUCT_RESTRICT_VENDOR_FILES := all
-
+# Override AOSP build properties
 PRODUCT_MANUFACTURER := Google
-PRODUCT_BRAND := Android
+PRODUCT_BRAND := Google
 PRODUCT_NAME := aosp_crosshatch
 PRODUCT_DEVICE := crosshatch
-PRODUCT_MODEL := AOSP on crosshatch
-
-# Audio XMLs
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
-
+PRODUCT_MODEL := Pixel 3 XL
+TARGET_DEVICE := crosshatch
+EXTENDED_BUILD_TYPE := OFFICIAL
