@@ -23,9 +23,4 @@
 
     <!-- Whether to show Connected MAC Randomization in Developer Options. -->
     <bool name="config_wifi_support_connected_mac_randomization">true</bool>
-
-    <!-- Fully-qualified class name for the implementation of the FeatureFactory to be instantiated. -->
-    <string name="config_featureFactory"
-            translatable="false">com.google.android.settings.overlay.FeatureFactoryImpl</string>
-
 </resources>
